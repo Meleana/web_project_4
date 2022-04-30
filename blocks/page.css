@@ -1,6 +1,6 @@
 .page {
-    background-color: #000000;
-    color: #ffffff;
+  background-color: #000000;
+  color: #ffffff;
   font-family: "Inter", sans-serif;
   text-align: center;
   -webkit-font-smoothing: antialiased;
@@ -8,4 +8,8 @@
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   -moz-text-size-adjust: 100%;
+}
+
+.page__container {
+  
 }
