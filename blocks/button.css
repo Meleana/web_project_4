@@ -1,0 +1,11 @@
+.button {
+    border: none;
+    display: inline-block;
+    vertical-align: middle;
+    transition: opacity .5s ease-in-out;
+}
+
+.button:hover {
+    cursor: pointer;
+    opacity: .6;
+}

@@ -1,0 +1,21 @@
+.header {
+    width: 100%;
+    text-align: left;
+    border-bottom: 1px solid rgb(84, 84, 84, 0.7);
+    margin-bottom: 38px;
+}
+
+.header__logo {
+    margin: 28px 0 32px 8px;
+    
+}
+
+@media screen and (min-width: 768px) {
+    .header {
+        margin-bottom: 36px;
+    }
+
+    .header__logo {
+        min-width: 173px;
+    }
+}
