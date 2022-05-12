@@ -1,0 +1,132 @@
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #00000080;
+  pointer-events: none;
+  visibility: hidden;
+  opacity: 0;
+  /* transition: all 0.6s ease; */
+}
+
+.popup__open {
+  pointer-events: all;
+  visibility: visible;
+  opacity: 1;
+}
+
+.popup__container {
+  padding: 0 19px;
+  position: relative;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 430px;
+}
+
+.popup__close-button {
+  background: url(../images/buttons/close-button.svg) center center no-repeat;
+  width: 21px;
+  height: 21px;
+  /* transform: rotate(-45deg); */
+  background-color: transparent;
+  padding: 0;
+  position: absolute;
+  top: -35px;
+  right: 19px;
+  padding: 0;
+  cursor: pointer;
+  border: none;
+  /* transition: 0.6s ease; */
+}
+
+.popup__form {
+  text-align: left;
+  width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+  box-sizing: border-box;
+  /* padding: 34px 36px 36px 36px; */
+  padding: 25px 22px;
+}
+
+.popup__title {
+  font-weight: 900;
+  font-size: 1.125rem;
+  line-height: 1.375rem;
+  color: #000000;
+  padding: 0;
+  margin: 0 0 67px;
+}
+
+.popup__input-name,
+.popup__input-description {
+  display: block;
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  padding: 9px 0;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  border-bottom: 1px solid #00000033;
+  margin-bottom: 21px;
+}
+.popup__input-name:focus,
+.popup__input-description:focus {
+  box-sizing: border-box;
+  padding-left: 10px;
+  outline: none;
+  border: 2px solid gray;
+  border-radius: 2px;
+}
+.popup__save-button {
+  margin-top: 25px;
+  width: 100%;
+  color: #ffffff;
+  font-weight: 400;
+  font-size: 0.875rem;
+  line-height: 1.0625rem;
+  padding: 14px 0;
+  background-color: #000000;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 470px) {
+  .popup__form {
+    padding: 36px;
+  }
+
+  .popup__title {
+    font-size: 1.5rem;
+    line-height: 1.8125rem;
+    margin: 0 0 41px;
+  }
+
+  .popup__input-name,
+  .popup__input-description {
+    padding: 13px 0;
+    margin-bottom: 17px;
+  }
+
+  .popup__save-button {
+    margin-top: 31px;
+    font-size: 1.125rem;
+    line-height: 1.375rem;
+    padding: 14px 0;
+  }
+}
+
+@media screen and (min-width: 530px) {
+  .popup__close-button {
+    width: 32px;
+    height: 32px;
+    right: -16px;
+  }
+}
