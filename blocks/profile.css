@@ -1,7 +1,7 @@
 .profile {
   gap: 30px;
   display: inline-flex;
-  margin-bottom: 26px;
+  margin-bottom: 36px;
   width: 100%;
   flex-wrap: wrap;
   flex-direction: column;
@@ -18,7 +18,8 @@
 
 .profile__container {
   display: inline-flex;
-  align-items: baseline;
+  /* align-items: baseline; */
+  align-items: center;
   margin: 0 0 14px;
 }
 
@@ -45,9 +46,14 @@
 
 .profile__description {
   margin: 0;
+  min-width: 196px;
+  max-width: calc(100vw - 38px);
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 1.0625rem;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 .profile__add-button {
@@ -75,6 +81,10 @@
     max-width: calc(100vw - 216px);
   }
 
+  .profile__description {
+    max-width: calc(100vw - 188px);
+  }
+
   .profile__info {
     text-align: left;
     margin: auto auto auto 0;
@@ -82,8 +92,16 @@
 }
 
 @media screen and (min-width: 650px) {
+  .profile {
+    margin-bottom: 46px;
+  }
+
   .profile__name {
     max-width: calc(100vw - 396px);
+  }
+
+  .profile__description {
+    max-width: calc(100vw - 368px);
   }
 
   .profile__add-button {
@@ -92,7 +110,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 790px) {
   .profile__name {
     max-width: calc(100vw - 410px);
     font-size: 2.625rem;
@@ -100,12 +118,14 @@
   }
 
   .profile__description {
+    max-width: calc(100vw - 368px);
     font-size: 1.125rem;
     line-height: 1.375rem;
   }
 
   .profile__edit-button {
     margin-left: 18px;
+    margin-top: 10px;
     width: 24px;
     height: 24px;
   }
@@ -114,5 +134,9 @@
 @media screen and (min-width: 918px) {
   .profile__name {
     max-width: 508px;
+  }
+
+  .profile__description {
+    max-width: 550px;
   }
 }

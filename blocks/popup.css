@@ -15,7 +15,7 @@
   /* transition: all 0.6s ease; */
 }
 
-.popup__open {
+.popup_open {
   pointer-events: all;
   visibility: visible;
   opacity: 1;
@@ -64,8 +64,7 @@
   margin: 0 0 67px;
 }
 
-.popup__input-name,
-.popup__input-description {
+.popup__profile-input {
   display: block;
   width: 100%;
   background-color: transparent;
@@ -77,8 +76,7 @@
   border-bottom: 1px solid #00000033;
   margin-bottom: 21px;
 }
-.popup__input-name:focus,
-.popup__input-description:focus {
+.popup__profile-input:focus {
   box-sizing: border-box;
   padding-left: 10px;
   outline: none;
@@ -98,6 +96,10 @@
   cursor: pointer;
 }
 
+.popup__save-button:hover {
+  opacity: .8;
+}
+
 @media screen and (min-width: 470px) {
   .popup__form {
     padding: 36px;
@@ -109,8 +111,7 @@
     margin: 0 0 41px;
   }
 
-  .popup__input-name,
-  .popup__input-description {
+  .popup__profile-input {
     padding: 13px 0;
     margin-bottom: 17px;
   }

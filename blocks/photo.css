@@ -1,6 +1,6 @@
 .photo {
   min-width: 282px;
-  min-height: 361px;
+  /* min-height: 361px; */
   overflow: hidden;
 }
 
@@ -19,7 +19,8 @@
   color: #000000;
   background-color: #ffffff;
   border-radius: 0 0 10px 10px;
-  padding-top: 25px;
+  /* padding-top: 25px; */
+  padding: 25px 0;
   display: flex;
   align-items: baseline;
   justify-content: space-between;
@@ -27,7 +28,8 @@
 
 .photo__description {
   max-width: calc(100% - 60px);
-  margin: 0 0 30px;
+  /* margin: 0 0 30px; */
+  margin: 0;
   font-weight: 900;
   font-size: 1.5rem;
   line-height: 1.8125rem;
@@ -43,6 +45,10 @@
   height: 19px;
   padding: 0 10.5px;
   margin-right: 21px;
+}
+
+.photo__like-button:hover {
+  opacity: .5;
 }
 
 .photo__like-button_active {

@@ -11,150 +11,189 @@
     <link rel="stylesheet" href="./pages/index.css" />
   </head>
   <body class="page">
-    <div class="page__container">
-      <header class="header">
-        <img class="header__logo" src="./images/Logo.svg" alt="Logotype" />
-      </header>
+    <!-- <div class="page__container"> -->
+    <header class="header">
+      <img class="header__logo" src="./images/Logo.svg" alt="Logotype" />
+    </header>
 
-      <main class="main">
-        <section class="profile">
-          <img
-            class="profile__img"
-            src="./images/profile.svg"
-            alt="Profile photo"
-          />
-          <div class="profile__info">
-            <div class="profile__container">
-              <h1 class="profile__name">Jacques Cousteau</h1>
-              <button
-                type="button"
-                class="button profile__edit-button"
-              ></button>
-            </div>
-            <p class="profile__description">Explorer</p>
+    <main class="main page__container">
+      <section class="profile">
+        <img
+          class="profile__img"
+          src="./images/profile.svg"
+          alt="Profile photo"
+        />
+        <div class="profile__info">
+          <div class="profile__container">
+            <h1 class="profile__name">Jacques Cousteau</h1>
+            <button
+              type="button"
+              class="button profile__edit-button"
+              aria-label="profile edit button"
+            ></button>
           </div>
-          <button type="button" class="button profile__add-button"></button>
-        </section>
-
-        <section class="photos">
-          <div class="photo">
-            <img
-              class="photo__img"
-              src="./images/photos/Yosemite_Valley.png"
-              alt="Yosemite Valley"
-              title="Yosemite Valley"
-            />
-            <div class="photo__info">
-              <h2 class="photo__description">Yosemite Valley</h2>
-              <button type="button" class="button photo__like-button"></button>
-            </div>
-          </div>
-
-          <div class="photo">
-            <img
-              class="photo__img"
-              src="./images/photos/Lake_Louise.png"
-              alt="Lake Louise"
-              title="Lake Louise"
-            />
-            <div class="photo__info">
-              <h2 class="photo__description">Lake Louise</h2>
-              <button type="button" class="button photo__like-button"></button>
-            </div>
-          </div>
-
-          <div class="photo">
-            <img
-              class="photo__img"
-              src="./images/photos/Bald_Mountains.png"
-              alt="Bald Mountains"
-              title="Bald Mountains"
-            />
-            <div class="photo__info">
-              <h2 class="photo__description">Bald Mountains</h2>
-              <button type="button" class="button photo__like-button"></button>
-            </div>
-          </div>
-
-          <div class="photo">
-            <img
-              class="photo__img"
-              src="./images/photos/Latemar.png"
-              alt="Latemar"
-              title="Latemar"
-            />
-            <div class="photo__info">
-              <h2 class="photo__description">Latemar</h2>
-              <button type="button" class="button photo__like-button"></button>
-            </div>
-          </div>
-
-          <div class="photo">
-            <img
-              class="photo__img"
-              src="./images/photos/Vanoise_National_Park.png"
-              alt="Vanoise National Park"
-              title="Vanoise National Park"
-            />
-            <div class="photo__info">
-              <h2 class="photo__description">Vanoise National Park</h2>
-              <button type="button" class="button photo__like-button"></button>
-            </div>
-          </div>
-
-          <div class="photo">
-            <img
-              class="photo__img"
-              src="./images/photos/Lago_di_Braies.png"
-              alt="Lago di Braies"
-              title="Lago di Braies"
-            />
-            <div class="photo__info">
-              <h2 class="photo__description">Lago di Braies</h2>
-              <button type="button" class="button photo__like-button"></button>
-            </div>
-          </div>
-        </section>
-      </main>
-
-      <footer class="footer">
-        <!-- <p class="footer__copyright">&copy; 2021 Around The U.S.</p> -->
-        <p class="footer__copyright">&copy; 2022 Shavrova Anastasia</p>
-      </footer>
-
-      <section>
-        <div id="popupProfileEdit2" class="popup">
-          <div class="popup__container"></div>
+          <p class="profile__description">Explorer</p>
         </div>
-
-        <div id="popupProfileEditor" class="popup">
-          <div class="popup__container">
-            <button type="button" class="button popup__close-button"></button>
-            <form class="popup__form" novalidate autocomplete="off">
-              <h2 class="popup__title">Edit profile</h2>
-              <input
-                class="popup__input-name"
-                type="text"
-                id="name"
-                name="name"
-                placeholder="Name"
-                required
-              />
-              <input
-                class="popup__input-description"
-                type="text"
-                id="description"
-                name="description"
-                placeholder="Description"
-              />
-              <button type="submit" class="button popup__save-button">
-                Save
-              </button>
-            </form>
-          </div>
-        </div>
+        <button
+          type="button"
+          class="button profile__add-button"
+          aria-label="profile add button"
+        ></button>
       </section>
+
+      <section class="photos">
+        <article class="photo">
+          <img
+            class="photo__img"
+            src="./images/photos/Yosemite_Valley.png"
+            alt="Yosemite Valley"
+            title="Yosemite Valley"
+          />
+          <div class="photo__info">
+            <h2 class="photo__description">Yosemite Valley</h2>
+            <button
+              type="button"
+              class="button photo__like-button"
+              aria-label="photo like button"
+            ></button>
+          </div>
+        </article>
+
+        <article class="photo">
+          <img
+            class="photo__img"
+            src="./images/photos/Lake_Louise.png"
+            alt="Lake Louise"
+            title="Lake Louise"
+          />
+          <div class="photo__info">
+            <h2 class="photo__description">Lake Louise</h2>
+            <button
+              type="button"
+              class="button photo__like-button"
+              aria-label="photo like button"
+            ></button>
+          </div>
+        </article>
+
+        <article class="photo">
+          <img
+            class="photo__img"
+            src="./images/photos/Bald_Mountains.png"
+            alt="Bald Mountains"
+            title="Bald Mountains"
+          />
+          <div class="photo__info">
+            <h2 class="photo__description">Bald Mountains</h2>
+            <button
+              type="button"
+              class="button photo__like-button"
+              aria-label="photo like button"
+            ></button>
+          </div>
+        </article>
+
+        <article class="photo">
+          <img
+            class="photo__img"
+            src="./images/photos/Latemar.png"
+            alt="Latemar"
+            title="Latemar"
+          />
+          <div class="photo__info">
+            <h2 class="photo__description">Latemar</h2>
+            <button
+              type="button"
+              class="button photo__like-button"
+              aria-label="photo like button"
+            ></button>
+          </div>
+        </article>
+
+        <article class="photo">
+          <img
+            class="photo__img"
+            src="./images/photos/Vanoise_National_Park.png"
+            alt="Vanoise National Park"
+            title="Vanoise National Park"
+          />
+          <div class="photo__info">
+            <h2 class="photo__description">Vanoise National Park</h2>
+            <button
+              type="button"
+              class="button photo__like-button"
+              aria-label="photo like button"
+            ></button>
+          </div>
+        </article>
+
+        <article class="photo">
+          <img
+            class="photo__img"
+            src="./images/photos/Lago_di_Braies.png"
+            alt="Lago di Braies"
+            title="Lago di Braies"
+          />
+          <div class="photo__info">
+            <h2 class="photo__description">Lago di Braies</h2>
+            <button
+              type="button"
+              class="button photo__like-button"
+              aria-label="photo like button"
+            ></button>
+          </div>
+        </article>
+      </section>
+    </main>
+
+    <footer class="footer page__container">
+      <!-- <p class="footer__copyright">&copy; 2021 Around The U.S.</p> -->
+      <p class="footer__copyright">&copy; 2022 Shavrova Anastasia</p>
+    </footer>
+
+    <div>
+      <div id="popupProfileEditor" class="popup page__container">
+        <div class="popup__container">
+          <button
+            type="button"
+            class="button popup__close-button"
+            aria-label="popup close button"
+          ></button>
+          <form
+            id="editProfileForm"
+            class="popup__form"
+            novalidate
+            autocomplete="off"
+          >
+            <h2 class="popup__title">Edit profile</h2>
+            <!-- "Both inputs have the same styling, therefore they need the same class. They need a common element class, but they also need different modifiers to search them by in JS. Please note that these should be key-value modifiers." - Here insted of using "key-value modifiers" couldn't I use ID/name/value (for example if we want to send the data to the server we can use key (name) + value (value))???-->
+            <input
+              class="popup__profile-input"
+              type="text"
+              id="profileName"
+              name="profileName"
+              placeholder="Name"
+              required
+            />
+            <input
+              class="popup__profile-input"
+              type="text"
+              id="profileDescription"
+              name="profileDescription"
+              placeholder="Description"
+            />
+            <button
+              type="submit"
+              class="button popup__save-button"
+              aria-label="popup save button"
+            >
+              Save
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
+    <!-- </div> -->
     <script src="./scripts/index.js"></script>
   </body>
 </html>
