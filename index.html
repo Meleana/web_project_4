@@ -146,7 +146,7 @@
       </section>
     </main>
 
-    <!-- Hi Marina. Thank you very much for the feedback. Correcting mistakes was fun and sometimes not very easy. I like to work with you! :) I have a question about the sticky footer: taking into account my structure, absence of strictly fixed height for the footer, as well as the ban on the use of negative margins in the previous project, I would like to clarify (get a hint? :)) which of the options (suggested in the article) is better to use for this project? xD  -->
+    <!-- "As for fixed height, you can use min-height: 100vh, it won't be a violation. In this particular case, since height is needed to implement a sticky footer, using height: 100% or 100vh won't also be a problem. height shouldn't be set for the blocks where it should depend on the content." ---- In example with flexboh I need to set up the height also on html tag... It will work without or I also need to create the "class" for html tag??? Or I can use html tag? -->
 
     <footer class="footer page__container">
       <!-- <p class="footer__copyright">&copy; 2021 Around The U.S.</p> -->
@@ -168,7 +168,6 @@
             autocomplete="off"
           >
             <h2 class="popup__title">Edit profile</h2>
-            <!-- "Both inputs have the same styling, therefore they need the same class. They need a common element class, but they also need different modifiers to search them by in JS. Please note that these should be key-value modifiers." - Here insted of using "key-value modifiers" couldn't I use ID/name/value (for example if we want to send the data to the server we can use key (name) + value (value))???-->
             <input
               class="popup__profile-input"
               type="text"
