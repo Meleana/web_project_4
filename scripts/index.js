@@ -2,80 +2,159 @@
 //        Variables
 //---------------------------------------------------------------
 const popupProfileEditor = document.getElementById("popupProfileEditor");
-
 const profileEditButton = document.querySelector(".profile__edit-button");
-// const profileCloseButton = popupProfileEditor.querySelector(".popup__close-button");
-
 
 const profileName = document.querySelector(".profile__name");
 const profileDescription = document.querySelector(".profile__description");
 const profileEditName = popupProfileEditor.querySelector("#profileName");
-const profileEditDescription = popupProfileEditor.querySelector("#profileDescription");
+const profileEditDescription = popupProfileEditor.querySelector(
+  "#profileDescription"
+);
 
+const popupCardAdder = document.getElementById("popupCardAdder");
+
+const profileAddButton = document.querySelector(".profile__add-button"); //name of the variable and class????
+
+const cardName = document.getElementById("placeName");
+const cardUrl = document.getElementById("placeUrl");
+// const cardForm = document.getElementById("addCardForm");
+
+const popupZoom = document.getElementById("popupZoomInOut");
+
+const initialCards = [
+  {
+    name: "Yosemite Valley",
+    link: "https://code.s3.yandex.net/web-code/yosemite.jpg",
+  },
+  {
+    name: "Lake Louise",
+    link: "https://code.s3.yandex.net/web-code/lake-louise.jpg",
+  },
+  {
+    name: "Bald Mountains",
+    link: "https://code.s3.yandex.net/web-code/bald-mountains.jpg",
+  },
+  {
+    name: "Latemar",
+    link: "https://code.s3.yandex.net/web-code/latemar.jpg",
+  },
+  {
+    name: "Vanoise National Park",
+    link: "https://code.s3.yandex.net/web-code/vanoise.jpg",
+  },
+  {
+    name: "Lago di Braies",
+    link: "https://code.s3.yandex.net/web-code/lago.jpg",
+  },
+];
 
 //---------------------------------------------------------------
 //        Functions
 //---------------------------------------------------------------
 
-// I wrote an alternative (commented lines: 7, 42-45, 65, 73, 81), 
-//but I'm not quite sure why? :)
-
-// 1. The design already assumes other popups (their number is not known).
-// 2. Not having the anonymous arrow function will add to the necessity of writing 
-// a function for each popup.
-// 3. Defining constants and lookups outside the code will strain the architecture, 
-// since constants and event listeners can never be used by the user. 
-// 4. Pros of using this function:
-// 5. The function allows you to open and close any popup
-// 6. The definition of the closing button constant (DOM search) does not occur 
-// within the whole document, but only within a particular popup.
-// 7. The closeButton constant is defined only if the popup 
-// is opened (which might not be opened).
-// 8. The event listener is only used while the popup is open, 
-// thus avoiding unnecessary remove that is not needed.
-
-// Conclusion: we get definition of only necessary constants, the code is concise 
-// and the function is universal. The event listener works within the function 
-// and strictly until the currently active popup is closed. 
-
-
-// function popUpProfileToggler() {
-//   popupProfileEditor.classList.toggle("popup_open");
-//   profileCloseButton.removeEventListener("click", popUpProfileToggler);
-// }
-
-function popUpToggler(popup) {
-  popup.classList.toggle("popup_open");
-  if (popup.classList.contains("popup_open")) {
-    const closeButton = popup.querySelector(".popup__close-button");
-    closeButton.addEventListener(
-      "click",
-      () => {
-        popUpToggler(popup);
-      },
-      { once: true }
-    );
+function popupToggler() {
+  curentPopup.classList.toggle("popup_open");
+  closeButton = curentPopup.querySelector(".popup__close-button");
+  if (curentPopup.classList.contains("popup_open")) {
+    closeButton.addEventListener("click", popupToggler);
+  } else {
+    closeButton.removeEventListener("click", popupToggler);
   }
 }
 
-function popUpProfileOpen() {
+function openPopupProfile() {
   profileEditName.value = profileName.textContent;
   profileEditDescription.value = profileDescription.textContent;
-  popUpToggler(popupProfileEditor);
-  // popUpProfileToggler();
+  curentPopup = popupProfileEditor;
+  popupToggler();
 }
 
-function popUpProfileSave(e) {
+function handleSubmit(e) {
   e.preventDefault();
   profileName.textContent = profileEditName.value;
   profileDescription.textContent = profileEditDescription.value;
-  popUpToggler(popupProfileEditor);
-  // popUpProfileToggler();
+  popupToggler(popupProfileEditor);
+}
+
+function openPopupCards() {
+  curentPopup = popupCardAdder;
+  // popupToggler(popupCardAdder);
+  popupToggler();
+}
+
+function getInitialCards(name, link) {
+  const templateCard = document.getElementById("card").content.cloneNode(true);
+  const cardImage = templateCard.querySelector(".photo__img");
+  const cardTitle = templateCard.querySelector(".photo__description");
+  // const photoCard = templateCard.content.cloneNode(true);
+  // const cardImage = photoCard.querySelector(".photo__img");
+  // const cardTitle = photoCard.querySelector(".photo__description");
+  const cardDelete = templateCard.querySelector(".photo__delete-button");
+  const likeButton = templateCard.querySelector(".photo__like-button");
+
+  cardImage.setAttribute("src", link);
+  cardImage.setAttribute("alt", `picture of ${name}`);
+  cardImage.setAttribute("title", `picture of ${name}`);
+
+  cardTitle.textContent = name;
+
+  //--------------   Event listeners  ---------------------
+  likeButton.addEventListener("click", () =>
+    likeButton.classList.toggle("photo__like-button_active")
+  );
+
+  cardDelete.addEventListener("click", () => cardDelete.parentNode.remove());
+
+  cardImage.addEventListener("click", function () {
+    const cardDescription = cardImage.parentNode.querySelector(
+      ".photo__description"
+    );
+    handleImgSize(cardImage.currentSrc, cardDescription.textContent);
+  });
+
+  // return photoCard;
+  return templateCard;
+}
+
+function renderCards(name, link) {
+  const cardContainer = document.querySelector(".photos");
+  const newCard = getInitialCards(name, link);
+  cardContainer.prepend(newCard);
+  // cardContainer.append(newCard); - right order without revers
+}
+
+function createNewCard(e) {
+  e.preventDefault();
+  renderCards(cardName.value, cardUrl.value); //- смотреть событие формы и смотреть event.target.value
+  popupToggler(popupCardAdder);
+  document.getElementById("addCardForm").reset();
+}
+
+initialCards.reverse().forEach((card) => {
+  renderCards(card.name, card.link);
+});
+
+function handleImgSize(source, description) {
+  const popupCardSrc = document.querySelector(".popup__img");
+  const popupCardDescription = document.querySelector(
+    ".popup__img-description"
+  );
+  popupCardSrc.setAttribute("src", source);
+  popupCardSrc.setAttribute("alt", `picture of ${description}`);
+  popupCardSrc.setAttribute("title", `picture of ${description}`);
+  popupCardDescription.textContent = description;
+
+  // popupToggler(popupZoom);
+  curentPopup = popupZoom;
+  // popupToggler(popupCardAdder);
+  popupToggler();
 }
 
 //---------------------------------------------------------------
-//        Add event listeners
+//        Event listeners
 //---------------------------------------------------------------
-profileEditButton.addEventListener("click", popUpProfileOpen);
-popupProfileEditor.addEventListener("submit", popUpProfileSave);
-// profileCloseButton.addEventListener("click", popUpProfileToggler);
+profileEditButton.addEventListener("click", openPopupProfile);
+popupProfileEditor.addEventListener("submit", handleSubmit);
+
+profileAddButton.addEventListener("click", openPopupCards);
+popupCardAdder.addEventListener("submit", createNewCard);

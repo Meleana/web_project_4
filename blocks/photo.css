@@ -2,6 +2,7 @@
   min-width: 282px;
   /* min-height: 361px; */
   overflow: hidden;
+  position: relative;
 }
 
 .photo__img {
@@ -39,6 +40,19 @@
   padding-left: 21px;
 }
 
+.photo__delete-button {
+  background: url(../images/buttons/delete-button.svg) center center no-repeat;
+  width: 18px;
+  height: 19px;
+  position: absolute;
+  right: 15px;
+  top: 18px;
+}
+
+.photo__delete-button:hover {
+  opacity: 0.5;
+}
+
 .photo__like-button {
   background: url(../images/buttons/like-button.svg) center center no-repeat;
   width: 21px;
@@ -48,7 +62,7 @@
 }
 
 .photo__like-button:hover {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .photo__like-button_active {

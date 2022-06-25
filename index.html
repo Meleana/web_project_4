@@ -34,23 +34,30 @@
           </div>
           <p class="profile__description">Explorer</p>
         </div>
+        <!-- it's not a profile add button. which class is more correct for this button??? because this button adding a picture -->
         <button
           type="button"
-          class="button profile__add-button"
+          class="button profile__add-button" 
           aria-label="profile add button"
         ></button>
       </section>
 
       <section class="photos">
+        <template id="card">
         <article class="photo">
           <img
             class="photo__img"
-            src="./images/photos/Yosemite_Valley.png"
-            alt="Yosemite Valley"
-            title="Yosemite Valley"
+            src="#"
+            alt="#"
+            title="#"
           />
+          <button
+              type="button"
+              class="button photo__delete-button"
+              aria-label="photo delete button"
+            ></button>
           <div class="photo__info">
-            <h2 class="photo__description">Yosemite Valley</h2>
+            <h2 class="photo__description"></h2>
             <button
               type="button"
               class="button photo__like-button"
@@ -58,91 +65,7 @@
             ></button>
           </div>
         </article>
-
-        <article class="photo">
-          <img
-            class="photo__img"
-            src="./images/photos/Lake_Louise.png"
-            alt="Lake Louise"
-            title="Lake Louise"
-          />
-          <div class="photo__info">
-            <h2 class="photo__description">Lake Louise</h2>
-            <button
-              type="button"
-              class="button photo__like-button"
-              aria-label="photo like button"
-            ></button>
-          </div>
-        </article>
-
-        <article class="photo">
-          <img
-            class="photo__img"
-            src="./images/photos/Bald_Mountains.png"
-            alt="Bald Mountains"
-            title="Bald Mountains"
-          />
-          <div class="photo__info">
-            <h2 class="photo__description">Bald Mountains</h2>
-            <button
-              type="button"
-              class="button photo__like-button"
-              aria-label="photo like button"
-            ></button>
-          </div>
-        </article>
-
-        <article class="photo">
-          <img
-            class="photo__img"
-            src="./images/photos/Latemar.png"
-            alt="Latemar"
-            title="Latemar"
-          />
-          <div class="photo__info">
-            <h2 class="photo__description">Latemar</h2>
-            <button
-              type="button"
-              class="button photo__like-button"
-              aria-label="photo like button"
-            ></button>
-          </div>
-        </article>
-
-        <article class="photo">
-          <img
-            class="photo__img"
-            src="./images/photos/Vanoise_National_Park.png"
-            alt="Vanoise National Park"
-            title="Vanoise National Park"
-          />
-          <div class="photo__info">
-            <h2 class="photo__description">Vanoise National Park</h2>
-            <button
-              type="button"
-              class="button photo__like-button"
-              aria-label="photo like button"
-            ></button>
-          </div>
-        </article>
-
-        <article class="photo">
-          <img
-            class="photo__img"
-            src="./images/photos/Lago_di_Braies.png"
-            alt="Lago di Braies"
-            title="Lago di Braies"
-          />
-          <div class="photo__info">
-            <h2 class="photo__description">Lago di Braies</h2>
-            <button
-              type="button"
-              class="button photo__like-button"
-              aria-label="photo like button"
-            ></button>
-          </div>
-        </article>
+      </template>
       </section>
     </main>
 
@@ -193,8 +116,69 @@
           </form>
         </div>
       </div>
+
+      <div id="popupCardAdder" class="popup page__container">
+        <div class="popup__container">
+          <button
+            type="button"
+            class="button popup__close-button"
+            aria-label="popup close button"
+          ></button>
+          <form
+            id="addCardForm"
+            class="popup__form"
+            novalidate
+            autocomplete="off"
+          >
+            <h2 class="popup__title">New Place</h2>
+            <input
+              class="popup__place-input"
+              type="text"
+              id="placeName"
+              name="placeName"
+              placeholder="Title"
+              required
+            />
+            <input
+              class="popup__url-input"
+              type="url"
+              id="placeUrl"
+              name="placeDescription"
+              placeholder="Image link"
+              required
+            />
+            <button
+              type="submit"
+              class="button popup__save-button"
+              aria-label="popup save button"
+            >
+              Create
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div id="popupZoomInOut" class="popup page__container">
+        <div class="popup__container">
+          <button
+            type="button"
+            class="button popup__close-button"
+            aria-label="popup close button"
+          ></button>
+          <img
+            class="popup__img"
+            src="#"
+            alt="#"
+            title="#"
+          />
+          <p class="popup__img-description"></p>
+        </div>
+      </div>
     </div>
     <!-- </div> -->
     <script src="./scripts/index.js"></script>
   </body>
 </html>
+
+
+
