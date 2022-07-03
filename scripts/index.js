@@ -12,9 +12,7 @@ const profileEditDescription = popupProfileEditor.querySelector(
 );
 
 const popupCardAdder = document.getElementById("popupCardAdder");
-
-const profileAddButton = document.querySelector(".profile__add-button"); //name of the variable and class????
-
+const profileAddButton = document.querySelector(".profile__add-button"); //Kseniya, could you please be so kind and advice me which class will be more correct for this button??? It's not a profile add button, because this button adding a picture. 
 const cardName = document.getElementById("placeName");
 const cardUrl = document.getElementById("placeUrl");
 // const cardForm = document.getElementById("addCardForm");
@@ -52,38 +50,51 @@ const initialCards = [
 //        Functions
 //---------------------------------------------------------------
 
-function popupToggler() {
+function togglePopup() {
   curentPopup.classList.toggle("popup_open");
   closeButton = curentPopup.querySelector(".popup__close-button");
   if (curentPopup.classList.contains("popup_open")) {
-    closeButton.addEventListener("click", popupToggler);
+    closeButton.addEventListener("click", togglePopup);
   } else {
-    closeButton.removeEventListener("click", popupToggler);
+    closeButton.removeEventListener("click", togglePopup);
   }
 }
 
 function openPopupProfile() {
   profileEditName.value = profileName.textContent;
   profileEditDescription.value = profileDescription.textContent;
-  curentPopup = popupProfileEditor;
-  popupToggler();
+  // curentPopup = popupProfileEditor;
+  // togglePopup(popupProfileEditor);
+  togglePopup((curentPopup = popupProfileEditor));
 }
 
-function handleSubmit(e) {
+//----------------------------------------------------------------
+// You can open/close popups without using an additional variable, because you always know what exactly is needed open or close a popup. Create two functions: one that opens a popup openPopup and one that closes a popup closePopup. Note,  that function names should start with a verb. Use openPopup(popup) every time. you want to. open a popup and use closePopup(popup) every time you want to close a popup...
+// =>
+//I understand that this can be divided into several functions, but in the framework of the last project (the example of the function from the last project below) that in this project to reduce and simplify the code (and most importantly - to create a universal open/close function), I decided to use the switch and have long been looking for different variations of how to do it. If this function can be improved/changed, I would be glad to receive any comments, but I would not like to describe it in several parts.
+//-------------------------------
+
+function handleProfileFormSubmit(e) {
   e.preventDefault();
   profileName.textContent = profileEditName.value;
   profileDescription.textContent = profileEditDescription.value;
-  popupToggler(popupProfileEditor);
+  togglePopup(popupProfileEditor);
 }
 
 function openPopupCards() {
-  curentPopup = popupCardAdder;
-  // popupToggler(popupCardAdder);
-  popupToggler();
+  // curentPopup = popupCardAdder;
+  togglePopup((curentPopup = popupCardAdder));
+  // togglePopup();
 }
 
-function getInitialCards(name, link) {
-  const templateCard = document.getElementById("card").content.cloneNode(true);
+//----------------------------------------------------------------
+//function name should describe what the function does. This function creates a card, so the good name would be " createCard"...
+// =>
+//This function not only creates cards, but also has delete and like buttons and click listeners. Even if you take the functions that are performed by clicking into separate independent functions, this function is still responsible not only for creating the card.  Is it really worth changing the name of the function, or would "getInitialCard" be acceptable?
+//-------------------------------
+function createCard(cardObject) {
+  const {name, link} = cardObject;
+  const templateCard = document.getElementById("card").content.cloneNode(true); ///Kseniya, could you please explain what exactly should I declare as a const? This part => const templateCard = document.getElementById("card")? Because it's not working or I misunderstood something... 
   const cardImage = templateCard.querySelector(".photo__img");
   const cardTitle = templateCard.querySelector(".photo__description");
   // const photoCard = templateCard.content.cloneNode(true);
@@ -101,14 +112,19 @@ function getInitialCards(name, link) {
   //--------------   Event listeners  ---------------------
   likeButton.addEventListener("click", () =>
     likeButton.classList.toggle("photo__like-button_active")
-  );
-
-  cardDelete.addEventListener("click", () => cardDelete.parentNode.remove());
+  ); // also here - the function from the second parameter of the listener should be taken out and declared separately - not working for me, because function can't find the variables or listener is not working... Probably you can explain it to me or give me a hint/direct me...
+  
+  // cardDelete.addEventListener("click", () => cardDelete.parentNode.remove());
+  cardDelete.addEventListener("click", () => cardDelete.closest(".photo").remove());
 
   cardImage.addEventListener("click", function () {
-    const cardDescription = cardImage.parentNode.querySelector(
+    // const cardDescription = cardImage.parentNode.querySelector(
+    //   ".photo__description"
+    // );
+    const cardDescription = cardImage.closest(".photo").querySelector(
       ".photo__description"
     );
+  
     handleImgSize(cardImage.currentSrc, cardDescription.textContent);
   });
 
@@ -116,45 +132,46 @@ function getInitialCards(name, link) {
   return templateCard;
 }
 
-function renderCards(name, link) {
+function renderCard(cardObject) {
   const cardContainer = document.querySelector(".photos");
-  const newCard = getInitialCards(name, link);
+  const newCard = createCard(cardObject);
   cardContainer.prepend(newCard);
   // cardContainer.append(newCard); - right order without revers
 }
 
 function createNewCard(e) {
   e.preventDefault();
-  renderCards(cardName.value, cardUrl.value); //- смотреть событие формы и смотреть event.target.value
-  popupToggler(popupCardAdder);
+  renderCard(cardName.value, cardUrl.value); 
+  togglePopup((curentPopup = popupCardAdder));
   document.getElementById("addCardForm").reset();
 }
 
-initialCards.reverse().forEach((card) => {
-  renderCards(card.name, card.link);
+initialCards.reverse().forEach((cardObject) => {
+  renderCard(cardObject);
 });
 
 function handleImgSize(source, description) {
-  const popupCardSrc = document.querySelector(".popup__img");
+  const popupImage = document.querySelector(".popup__img");
   const popupCardDescription = document.querySelector(
     ".popup__img-description"
   );
-  popupCardSrc.setAttribute("src", source);
-  popupCardSrc.setAttribute("alt", `picture of ${description}`);
-  popupCardSrc.setAttribute("title", `picture of ${description}`);
+  popupImage.setAttribute("src", source);
+  popupImage.setAttribute("alt", `picture of ${description}`);
+  popupImage.setAttribute("title", `picture of ${description}`);
   popupCardDescription.textContent = description;
 
-  // popupToggler(popupZoom);
-  curentPopup = popupZoom;
-  // popupToggler(popupCardAdder);
-  popupToggler();
+  // togglePopup(popupZoom);
+  // curentPopup = popupZoom;
+  togglePopup((curentPopup = popupZoom));
+  // togglePopup();
 }
 
 //---------------------------------------------------------------
 //        Event listeners
 //---------------------------------------------------------------
 profileEditButton.addEventListener("click", openPopupProfile);
-popupProfileEditor.addEventListener("submit", handleSubmit);
+popupProfileEditor.addEventListener("submit", handleProfileFormSubmit);
 
 profileAddButton.addEventListener("click", openPopupCards);
 popupCardAdder.addEventListener("submit", createNewCard);
+

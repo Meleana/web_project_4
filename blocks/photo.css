@@ -11,8 +11,10 @@
   min-height: 282px;
   border-radius: 10px 10px 0 0;
   object-fit: cover;
-  /* aspect-ratio: 1/1; */ /*AGAIN! Platfom is not allow to use it, however it was OK during last (4th) proj!!!!*/
+  aspect-ratio: 1/1; /*AGAIN! Platfom is not allow to use it, however it was OK during last (4th) proj!!!!*/
+  /* Dear Kseniya, nice to meet you. Thank you very much for your comments! All the images work great and have the right position and view if you uncomment the aspect-ratio property. In the last project everything worked fine and the automatic check accepted everything, now this property again does not pass the automatic check and I had to comment it out. */
   vertical-align: middle;
+  cursor: pointer;
 }
 
 .photo__info {
