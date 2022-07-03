@@ -11,7 +11,7 @@
 
 .profile__img {
   object-fit: cover;
-  aspect-ratio: 1/1; /*AGAIN! Platfom is not allow to use it, however it was OK during last (4th) proj!!!!*/
+  /*aspect-ratio: 1/1; /*AGAIN! Platfom is not allow to use it, however it was OK during last (4th) proj!!!!*/
   border-radius: 50%;
   max-width: 120px;
 }
