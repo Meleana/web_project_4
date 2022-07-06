@@ -13,8 +13,11 @@ const profileEditDescription = popupProfileEditor.querySelector(
 
 const popupCardAdder = document.getElementById("popupCardAdder");
 const profileAddButton = document.querySelector(".profile__add-button"); //Kseniya, could you please be so kind and advice me which class will be more correct for this button??? It's not a profile add button, because this button adding a picture. 
-const cardName = document.getElementById("placeName");
-const cardUrl = document.getElementById("placeUrl");
+// const cardName = document.getElementById("placeName");
+// const cardUrl = document.getElementById("placeUrl");
+const newCardLink = document.getElementById("placeUrl");
+const newCardTitle = document.getElementById("placeName");
+
 // const cardForm = document.getElementById("addCardForm");
 
 const popupZoom = document.getElementById("popupZoomInOut");
@@ -50,13 +53,13 @@ const initialCards = [
 //        Functions
 //---------------------------------------------------------------
 
-function togglePopup() {
-  curentPopup.classList.toggle("popup_open");
-  closeButton = curentPopup.querySelector(".popup__close-button");
-  if (curentPopup.classList.contains("popup_open")) {
-    closeButton.addEventListener("click", togglePopup);
+function togglePopup(popup) {
+  popup.classList.toggle("popup_open");
+  closeButton = popup.querySelector(".popup__close-button");
+  if (popup.classList.contains("popup_open")) {
+    closeButton.addEventListener("click", () => {togglePopup(popup)});
   } else {
-    closeButton.removeEventListener("click", togglePopup);
+    closeButton.removeEventListener("click", () => {togglePopup(popup)});
   }
 }
 
@@ -65,7 +68,7 @@ function openPopupProfile() {
   profileEditDescription.value = profileDescription.textContent;
   // curentPopup = popupProfileEditor;
   // togglePopup(popupProfileEditor);
-  togglePopup((curentPopup = popupProfileEditor));
+  togglePopup(popupProfileEditor);
 }
 
 //----------------------------------------------------------------
@@ -83,7 +86,7 @@ function handleProfileFormSubmit(e) {
 
 function openPopupCards() {
   // curentPopup = popupCardAdder;
-  togglePopup((curentPopup = popupCardAdder));
+  togglePopup(popupCardAdder);
   // togglePopup();
 }
 
@@ -141,8 +144,13 @@ function renderCard(cardObject) {
 
 function createNewCard(e) {
   e.preventDefault();
-  renderCard(cardName.value, cardUrl.value); 
-  togglePopup((curentPopup = popupCardAdder));
+  const newCardObject = {
+    link: newCardLink.value,
+    name: newCardTitle.value,
+  };
+  renderCard(newCardObject);
+  // renderCard(cardName.value, cardUrl.value); 
+  togglePopup(popupCardAdder);
   document.getElementById("addCardForm").reset();
 }
 
@@ -162,7 +170,7 @@ function handleImgSize(source, description) {
 
   // togglePopup(popupZoom);
   // curentPopup = popupZoom;
-  togglePopup((curentPopup = popupZoom));
+  togglePopup(popupZoom);
   // togglePopup();
 }
 
