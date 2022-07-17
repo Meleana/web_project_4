@@ -53,14 +53,29 @@ const initialCards = [
 //        Functions
 //---------------------------------------------------------------
 
+// function togglePopup(popup) {
+//   popup.classList.toggle("popup_open");
+//   closeButton = popup.querySelector(".popup__close-button");
+//   if (popup.classList.contains("popup_open")) {
+//     closeButton.addEventListener("click", () => {togglePopup(popup)});
+//   } else {
+//     closeButton.removeEventListener("click", () => {togglePopup(popup)});
+//   }
+// }
+
 function togglePopup(popup) {
-  popup.classList.toggle("popup_open");
-  closeButton = popup.querySelector(".popup__close-button");
+  popup.classList.toggle("popup_open")
+  const closeButton = popup.querySelector(".popup__close-button");
   if (popup.classList.contains("popup_open")) {
-    closeButton.addEventListener("click", () => {togglePopup(popup)});
+    closeButton.addEventListener("click", closeOpenedPopup);
   } else {
-    closeButton.removeEventListener("click", () => {togglePopup(popup)});
+    closeButton.removeEventListener("click", closeOpenedPopup);
   }
+} 
+
+function closeOpenedPopup() {
+  const openedPopup = document.querySelector(".popup_open");
+  togglePopup(openedPopup);
 }
 
 function openPopupProfile() {
